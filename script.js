@@ -59,7 +59,11 @@ let bookCatalog = {
 	},
 	'unread': function () {
 		var booksToRead = [];
-  		for (var book in this) {}
+  		for (var book in this) {
+			if (this[book]['has been read'] === false) {
+      		booksToRead.push(this[book].title);
+    		}
+		}
 	}
 };
 
