@@ -44,22 +44,24 @@ let bookCatalog = {
 		'borrowed by':'undifined',
 		'rating': 5,
 	},
-	'page marker': function () {
-		var pageInitial = this.page;
-  		this.page = prompt('Melyik oldalon tartasz a ' + this.title + ' című könyvedben?');
+	'page marker': function (book) {
+		var pageInitial = this[book].page;
+  		this[book].page = prompt('Melyik oldalon tartasz a ' + this[book].title + ' című könyvedben?');
 		if(typeof pageInitial === 'undefined') {
-    		alert('Jelenleg az alábbi oldalon tartasz: ' + this.page + ' az alábbi könyvedben: ' + this.title + '.');
+    		alert('Jelenleg az alábbi oldalon tartasz: ' + this[book].page + ' az alábbi könyvedben: ' + this[book].title + '.');
   		} 
-		else if (pageInitial > this.page) { 
-			alert('Szerintem elírtad a aktuális oldalszámot' + ' az alábbi könyvedben: ' + this.title + ', mert a ' + this.page + ' kevesebb, mint az előzőleg elolvasott oldalszám, azaz az ' + pageInitial + '.');
+		else if (pageInitial > this[book].page) { 
+			alert('Szerintem elírtad a aktuális oldalszámot' + ' az alábbi könyvedben: ' + this[book].title + ', mert a ' + this[book].page + ' kevesebb, mint az előzőleg elolvasott oldalszám, azaz a(z) ' + pageInitial + '.');
 		}
 		else {
-    		alert('Jelenleg az alábbi oldalon tartasz: ' + this.page + ' az alábbi könyvedben: ' + this.title + '. Legutóbb az alábbi oldalon tartottál: ' + pageInitial + ', így ez alkalommal ' + (this.page - pageInitial) + ' oldalt olvastál.');
+    		alert('Jelenleg az alábbi oldalon tartasz: ' + this[book].page + ' az alábbi könyvedben: ' + this[book].title + '. Legutóbb az alábbi oldalon tartottál: ' + pageInitial + ', így ez alkalommal ' + (this[book].page - pageInitial) + ' oldalt olvastál.');
   		}
 	}
 };
 
 
-bookCatalog['page marker']();
+bookCatalog['page marker']('myBook3');
+bookCatalog['page marker']('myBook3');
+
 
 
