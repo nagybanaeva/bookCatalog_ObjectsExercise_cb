@@ -4,7 +4,7 @@ let bookCatalog = {
   		'author': 'Harper Lee',
   		'genre': 'coming-of-age story',
   		'year of publication': 2015,
-		'has been read': false,
+		'has been read': true,
   		'main characters': ['Jean Louise Finch', 'Jeremy Finch', 'Atticus Finch'],
   		'quotes': {
     		'p116': '"Atticus, you must be wrong..." "How\'s that?" "Well, most folks seem to think they\'re right and you\'re wrong..." "They\'re certainly entitled to think that, and they\'re entitled to full respect for their opinions," said Atticus, "but before I can live with other folks I\'ve got to live with myself. The one thing that doesn\'t abide by majority rule is a person\'s conscience."',
@@ -45,7 +45,7 @@ let bookCatalog = {
 		'rating': 5,
 	},
 	'page marker': function (book) {
-		var pageInitial = this[book].page;
+		let pageInitial = this[book].page;
   		this[book].page = prompt('Melyik oldalon tartasz a ' + this[book].title + ' című könyvedben?');
 		if(typeof pageInitial === 'undefined') {
     		alert('Jelenleg az alábbi oldalon tartasz: ' + this[book].page + ' az alábbi könyvedben: ' + this[book].title + '.');
@@ -58,17 +58,25 @@ let bookCatalog = {
   		}
 	},
 	'unread': function () {
-		var booksToRead = [];
-  		for (var book in this) {
+		let booksToRead = [];
+  		for (let book in this) {
 			if (this[book]['has been read'] === false) {
       		booksToRead.push(this[book].title);
     		}
 		}
+		
+		if (booksToRead.length === 0) {
+			console.log('Elolvastad az összes könyvedet.');
+  		} 
+		else {
+    		console.log('Nem olvastad még el az alábbi könyveket: ' + booksToRead);
+  		}
 	}
 };
 
+bookCatalog['unread']();
 
+/*bookCatalog['page marker']('myBook3');
 bookCatalog['page marker']('myBook3');
-bookCatalog['page marker']('myBook3');
-
+*/
 
