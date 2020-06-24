@@ -4,7 +4,7 @@ let bookCatalog = {
   		'author': 'Harper Lee',
   		'genre': 'coming-of-age story',
   		'year of publication': 2015,
-		'has been read': true,
+		'has been read': false,
   		'main characters': ['Jean Louise Finch', 'Jeremy Finch', 'Atticus Finch'],
   		'quotes': {
     		'p116': '"Atticus, you must be wrong..." "How\'s that?" "Well, most folks seem to think they\'re right and you\'re wrong..." "They\'re certainly entitled to think that, and they\'re entitled to full respect for their opinions," said Atticus, "but before I can live with other folks I\'ve got to live with myself. The one thing that doesn\'t abide by majority rule is a person\'s conscience."',
@@ -71,10 +71,18 @@ let bookCatalog = {
 		else {
     		console.log('Nem olvastad még el az alábbi könyveket: ' + booksToRead);
   		}
+	},
+	'changeProperty': function (book, property) {
+		this[book][property] = prompt('A ' + this[book].title + ' című könyvedben mi legyen az új értéke a ' + property + ' tulajdonságnak?');
+		alert('A ' + this[book].title + ' című könyvedben az új értéke a ' + property + ' tulajdonságnak: ' + this[book][property] + '.');
 	}
 };
 
-bookCatalog['unread']();
+bookCatalog['changeProperty']('myBook1', 'has been read');
+
+
+
+/*bookCatalog['unread']();*/
 
 /*bookCatalog['page marker']('myBook3');
 bookCatalog['page marker']('myBook3');
