@@ -26,7 +26,7 @@ let bookCatalog = {
     		'p6': ['Monsieur Appert understood that he was dealing with a high-minded man: he followed the venerable priest, went to the prison, the old people\’s home, the poorhouse, asked a great many questions and, in spite of some extraordinary responses, did not allow himself the slightest indication of criticism.'],
     		'p10': ['Well, lazybones! You\’re always reading your damned books—and you’re supposed to be in charge of the saw? Read them tonight, when you\’re wasting time with the parish priest— fine, fine!', 'He was a small young man, eighteen or nineteen years old, not appearing very strong, with irregular but delicate features and an aquiline nose.']
   		},
-		'borrowed by': null,
+		'borrowed by': 'undefined',
 		'rating': 5,
 	},
 	'myBook3':{
@@ -41,7 +41,7 @@ let bookCatalog = {
     		'p20': ['The old priest, however, lingered behind and, while all the rest turned their faces toward the castle, took his daughter by the hand and went another way. In vain had a cover been laid for him in the great hall of the castle.'],
     		'p35': ['But Ödön arose without a word and left the box. Leonin followed him.']
   		},
-		'borrowed by':'Kata',
+		'borrowed by': 'Kate',
 		'rating': 5,
 	},
 	'page marker': function (book) {
@@ -88,18 +88,17 @@ let bookCatalog = {
 	'borrowed': function () {
 		let borrowedBooks = [];
 		for (let book in this) {
-			let borrowedProperty = bookCatalog[book]['borrowed by'];
-			if (typeof borrowedProperty !== 'function') {
-				if (borrowedProperty !== null) {
+			if (typeof this[book] !== 'function') {
+				if (this[book]['borrowed by'] !== null) {
 					borrowedBooks.push(this[book].title);
 				}
 			}
 		}
 		if (borrowedBooks.length === 0) {
-			console.log('Egy könyved sincs kölcsönadva.');
+			document.write('Egy könyved sincs kölcsönadva.');
 		}
 		else {
-		console.log('Az alábbi könyveid vannak kölcsönadva: ' + borrowedBooks + '.');
+			document.write('Az alábbi könyveid vannak kölcsönadva: ' + borrowedBooks + '.');
 		}
 	}
 };
