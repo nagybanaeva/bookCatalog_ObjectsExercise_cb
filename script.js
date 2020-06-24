@@ -75,10 +75,18 @@ let bookCatalog = {
 	'changeProperty': function (book, property) {
 		this[book][property] = prompt('A ' + this[book].title + ' című könyvedben mi legyen az új értéke a ' + property + ' tulajdonságnak?');
 		alert('A ' + this[book].title + ' című könyvedben az új értéke a ' + property + ' tulajdonságnak: ' + this[book][property] + '.');
+	},
+	'addQuote': function (book, page){
+		this[book].quotes[page] = prompt('Mi az idézet szövege, amit a ' + this[book].title + ' című könyvedhez szeretnél hozzáadni?');
+		alert('A ' + this[book].title +  ' című könyvedhez ezt az idézetet adtad hozzá: ' + this[book].quotes[page] + '.');
 	}
 };
 
-bookCatalog['changeProperty']('myBook1', 'has been read');
+bookCatalog['addQuote']('myBook3', 'p10');
+
+console.log(bookCatalog.myBook3.quotes);
+
+/*bookCatalog['changeProperty']('myBook1', 'has been read');*/
 
 
 
